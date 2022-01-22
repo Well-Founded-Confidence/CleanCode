@@ -77,6 +77,14 @@ public static void copyChars(char a1[], char a2[]) {
 
 - a1과 a2가 무엇을 의미하는지 알 수 없다.
 
+  ```java
+  public static void copyChars(char source[], char destination[]){
+      for (int i = 0; i < source.length; i++){
+          destination[i] = source[i];
+      }
+  }
+  ```
+
   - 함수 인수 이름을 source와 destination으로 변경한다면 훨씬 더 코드 읽기가 쉬울 것이다.
 
     
@@ -124,7 +132,6 @@ public static void copyChars(char a1[], char a2[]) {
 - firstName, lastName, street, houseNumber, city, state, zipcode
 
   - 변수명을 보면 주소라는 사실을 알 수 있다.
-
 - 만약 state 변수 하나만 사용한다면?
 
   - state가 주소 일부라는 사실을 알아차리기 어렵다.
@@ -132,10 +139,95 @@ public static void copyChars(char a1[], char a2[]) {
   - 그럼 어떻게 해야할까?
 
     - 주소라는 것을 알아차리기 쉽게 접두어를 추가한다.
+- ex : addrFirstName, addrLastName, addrState
 
-    - ex : addrFirstName, addrLastName, addrState
+#### [참고]
 
-      
+###### 루프속 i j k 자제
+
+```java
+//bad
+for (int i = 0; i < messages.size(); i++) {}
+
+//good
+for (String message : messages) {}
+messages.stream().forEach(
+	message -> //...
+)
+```
+
+- i, j -> row, col / width, height
+- i, j, k -> row, col, depth
+
+
+
+###### Google Java Naming Guide
+
+- Package
+
+  ```
+  com.example.deepspace 👍
+  com.example.deepSpace 👎
+  com.example.deep_space 👎
+  ```
+
+  - All lower case, no underscores
+
+    
+
+- Class
+
+  ```
+  // class는 명사, 명사구
+  Character, ImmutableList
+  
+  // 인터페이스는 명사, 명사구, (형용사)
+  List, Readable
+  
+  // 테스트 클래스는 Test로 끝내기
+  HashTest, HashIntegrationTest
+  ```
+
+  - UpperCamelCase
+
+  
+
+- Method
+
+  ```
+  // method는 동사, 동사구
+  sendMessage, stop
+  
+  // jUnit 테스트에 underscore 사용되기도 함
+  // <methodUnderTest>_<state> 패턴
+  pop_emptyStack
+  ```
+
+  - lowerCamelCase
+
+  
+
+- The others
+
+  - CONSTANT_CASE
+
+    - constant
+
+  - lowerCamelCase
+
+    - non-constant
+    - parameter
+    - local variable
+
+  - other camel cases
+
+    - 축약형과 같은 단어의 조합도 가급적 upper or lower camel case
+    - XmlHttpRequest - XMLHTTPRequest 👎
+    - newCustomerId - newCustomerID 👎
+    - innerStopwatch - innerStopWatch 👎
+    - supportsIpv6OnIos - supportsIPv6OnIOS 👎
+
+    
 
 ### 마치면서
 
