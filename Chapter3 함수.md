@@ -344,7 +344,11 @@ public boolean checkPasswordAndInitializeSession(String userName, String passwor
 > 일반적으로 출력 인수는 피해야한다. 함수에서 상태를 변경해야 한다면 **함수가 속한 객체 상태를 변경하는 방식**을 택한다.
 
 ```java
-appendFooter(s);
+// bad
+public void appendFooter(StringBuffer report, String s) {}
+
+// good
+report.appendFooter(s);
 ```
 
 위 함수를 보고 2가지를 유추할 수 있다.
