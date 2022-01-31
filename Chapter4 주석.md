@@ -179,6 +179,9 @@ protected VersionInfo makeVersion() throws Exception
 ```
 
 IDE에서는 TODO 주석만 모아볼 수도 있고 Intellij에서는 TODO 주석의 경우 타 주석과 글자색도 들어간다.
+### FIXME 주석
+> 문제가 있지만 당장 수정할 필요는 없을 때 사용하는 주석
+> 가능하면 빨리 수정하는 것이 좋다
 
 ### 중요성을 강조하는 주석
 
