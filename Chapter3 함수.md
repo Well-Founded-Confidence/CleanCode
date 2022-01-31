@@ -42,8 +42,38 @@
   - 대개 이 곳에서 함수를 호출하기 때문이다.
   - 바깥을 감싸는 함수(`enclosing function`)가 작아진다.
   - 호출 함수 이름을 적절히 짓는다면 코드를 이해하기도 쉬워진다.
-
-- 즉, 중첩 구조가 생길만큼 함수가 커져서는 안 된다.
+- 함수에서 들여쓰기는 1-2단을 넘어가면 안된다
+  ```java
+  // bad
+  if (pageData.hsAttribute("Test")) {
+    if (includeSuiteSetup) {
+      if () {
+        if () {
+          // ...
+        }
+      }
+    }
+    if (setup != null) {
+      // ...
+    }
+    if (teardown != null) {
+      // ...
+    }
+  }
+  
+  // good
+  boolean isTestPage = pageData.hasAttribute("Test");
+  if (isTestPage) {
+    includeSetupPages(testPage, newPageContent, isSuite);
+  }
+  
+  // better
+  // 인스턴스 변수로 만들 것을 판단하고, 함수를 쪼갠다
+  boolean isSuite;
+  if (isTestPage()) {
+    includeSetupAndTeardownPages();
+  }
+  ```
 
 ## 한 가지만 해라!
 
