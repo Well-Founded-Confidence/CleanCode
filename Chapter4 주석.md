@@ -163,6 +163,7 @@ public static SimpleDateFormat makeStandardHttpDateFormat()
 ```
 
 위 주석을 통해 정적 초기화 함수를 사용하려던 개발자가 주석 덕분에 실수를 면할 수 있다.
+스레드에 안전하지 못하다는 것은 @NotThreadSafe annotation을 이용할 수도 있다
 
 ### TODO 주석
 
