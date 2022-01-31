@@ -80,7 +80,47 @@
 > 함수는 `한 가지`를 해야 한다. 그 `한 가지`를 잘 해야 한다. 그 `한 가지`만을 해야 한다.
 
 ## 함수 당 추상화 수준은 하나로!
+- 함수가 확실히 '한 가지' 작업만 하려면 함수 내 모든 문장의 추상화 수준이 동일해야 함
+- 추상화 수준 예시
+  - getHtml() : 추상화 수준 매우 높음
+  - String pagePathName = PathParser.render(pagepath) : 추상화 수준 중간
+  - .append("\n") : 추상화 수준 매우 낮음
 
+- `p.392 [G34] 함수는 추상화 수준을 한 단계만 내려가야 한다`
+  > - 함수 내 모든 문장은 추상화 수준이 동일해야 함. 
+  > - 추상화 수준은 함수 이름이 의미하는 작업보다 한 단계만 낮아야 함
+  ```java
+  // bad
+  // 추상화 수준이 2개가 섞여 있음(수평선에 크기가 있다는 개념 & HR 태그 자체의 문법)
+  // 즉, hr 수평선 태그와 태그의 size 속성을 명시하는 태그가 함수 안에서 직접적으로 작성되어 있다는 것
+  public String render() throws Exception {
+    StringBuffer html = new StringBuffer("<hr");
+    if (size > 0) {
+    	html.append(" size=\"")
+  				.append(size + 1)
+        	.append("\"");
+    }
+    html.append(">");
+    
+    return html.toString();
+  }
+  
+  // good
+  // hr, size 분리
+  // 결론적으로 render() 메서드는 hr 태그를 html 형식으로 리턴하는 행위에 집중(생성과 size를 결정하는 로직은 별도 클래스나 메서드로 분리)
+  public String render() throws Exception {
+    HtmlTag hr = new HtmlTag("hr");  // HtmlTag 클래스로 hr 태그 (문법적) 생성 로직 분리
+    if (extraDashes > 0) {
+      hr.addAttribute("size", hrSize(extraDashes));  // hrSize 메서드로 사이즈 결정 로직 분리
+    }
+    
+    return hr.html();
+  }
+  
+  private String hrSize(int height) {
+    int hrSize = height + 1;
+    return String.format("%d", hrSize);
+  }
 ### 위에서 아래로 코드 읽기: 내려가기 규칙
 
 > 코드는 위에서 아래로 이야기처럼 읽혀야 좋다
