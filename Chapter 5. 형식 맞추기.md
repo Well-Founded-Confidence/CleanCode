@@ -318,7 +318,7 @@ public class FitNesseExpediter implements ResponseSender {
 
 [가짜 범위]
 
-- 빈 while문이나 for문을 접했을 경우에, 세미클론(;)은 새 행에다 제대로 들여써서 넣어준다.
+- 빈 while문이나 for문을 접했을 경우에, 세미콜론(;)은 새 행에다 제대로 들여써서 넣어준다.
 
 ```java
 while (dis.read(buf, 0, readBufferSize) != -1)
