@@ -102,7 +102,7 @@ public class Geometry {
             Circle c = (Circle)shape;
             return PI * c.radius * c.radius;
         }
-        throw new NoSuchShapeExcetpion();
+        throw new NoSuchShapeException();
     }
 }
 ```
