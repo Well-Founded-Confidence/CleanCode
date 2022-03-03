@@ -81,7 +81,7 @@ public void methodTest() {
 ```java
 // 9-1
 // SerializedPageResponderTest.java
-public void testGetPageHieratchyAsXml() throws Exception {
+public void testGetPageHierarchyAsXml() throws Exception {
   crawler.addPage(root, PathParser.parse("PageOne"));
   crawler.addPage(root, PathParser.parse("PageOne.ChildOne"));
   crawler.addPage(root, PathParser.parse("PageTwo"));
