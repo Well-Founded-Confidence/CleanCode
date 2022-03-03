@@ -99,7 +99,7 @@ public void testGetPageHierarchyAsXml() throws Exception {
   assertSubString("<name>ChildOne</name>", xml);
 }
 
-public void testGetPageHieratchyAsXmlDoesntContainSymbolicLinks() throws Exception {
+public void testGetPageHierarchyAsXmlDoesntContainSymbolicLinks() throws Exception {
   WikiPage pageOne = crawler.addPage(root, PathParser.parse("PageOne"));
   crawler.addPage(root, PathParser.parse("PageOne.ChildOne"));
   crawler.addPage(root, PathParser.parse("PageTwo"));
